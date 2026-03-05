@@ -4,20 +4,20 @@ import { Resend } from 'resend'
 import { getSupabaseAdmin } from '@/utils/supabase/server'
 import crypto from 'crypto'
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('Missing STRIPE_SECRET_KEY')
-}
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  apiVersion: '2023-10-16' as any, // Standard version
-  typescript: true,
-})
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!
-
 export async function POST(req: Request) {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return NextResponse.json({ error: 'Missing STRIPE_SECRET_KEY' }, { status: 500 })
+  }
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    apiVersion: '2023-10-16' as any, // Standard version
+    typescript: true,
+  })
+
+  const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder')
+  const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!
+
   const body = await req.text()
   const sig = req.headers.get('stripe-signature') as string
 
