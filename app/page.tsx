@@ -1,3 +1,5 @@
+import ImageCarousel from "../components/ImageCarousel";
+
 export default function Home() {
   return (
     <>
@@ -17,16 +19,7 @@ export default function Home() {
         <div className="w-full max-w-[1400px] h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 bg-white">
 
           <div className="flex items-center justify-center p-4 lg:p-8 relative overflow-hidden bg-white min-h-0">
-            <div className="w-full h-full relative flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                alt="Initial Beanie"
-                className="relative z-10 w-full h-full max-h-full object-contain grayscale contrast-[1.2] transition-transform duration-700 hover:scale-105"
-                src="https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&q=80&w=800"
-              />
-              <span className="absolute top-0 left-0 text-[10px] font-mono text-stone-400 tracking-widest z-20 bg-white px-2 py-1 brutalist-border-light">OBJ.001</span>
-              <span className="absolute bottom-0 right-0 text-[10px] font-mono text-stone-400 tracking-widest z-20 bg-white px-2 py-1 brutalist-border-light">ED. / 2024</span>
-            </div>
+            <ImageCarousel />
           </div>
 
           <div className="flex flex-col justify-center p-4 lg:p-8 bg-white min-h-0">
