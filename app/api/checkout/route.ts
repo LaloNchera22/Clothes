@@ -1,18 +1,18 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('Missing STRIPE_SECRET_KEY')
-}
-
-// Using a standard version string, cast to any to avoid TS errors with newer/older definitions
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  apiVersion: '2023-10-16' as any,
-  typescript: true,
-})
-
 export async function POST(req: Request) {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return NextResponse.json({ error: 'Missing STRIPE_SECRET_KEY' }, { status: 500 })
+  }
+
+  // Using a standard version string, cast to any to avoid TS errors with newer/older definitions
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    apiVersion: '2023-10-16' as any,
+    typescript: true,
+  })
+
   try {
     const body = await req.json()
     const { product } = body
