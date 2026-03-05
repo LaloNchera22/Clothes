@@ -9,7 +9,7 @@ export default function DetailsPage() {
       <div className="max-w-xl mx-auto space-y-8 mt-24">
         <h1 className="text-2xl font-bold tracking-widest uppercase">System Details</h1>
         <div className="space-y-4 text-sm leading-relaxed">
-          <p>La arquitectura A0_BADX es un protocolo experimental que une artefactos físicos con acceso digital. Para acceder a todo el repertorio del lanzamiento mensual por tiempo limitado es solo con un código de compra. Al comprar un producto te llegan 3 códigos. Solo producimos 100 de cada drop y el único que se repite siempre es el gorro. Los códigos de acceso son de un solo uso e intransferibles.</p>
+          <p>The A0_BADX architecture is an experimental protocol bridging physical artifacts with digital access. Access to the complete repertoire of our limited-time monthly release is granted exclusively through a purchase code. Upon purchasing a product, you will receive 3 codes. We produce only 100 units of each drop, and the sole continuously available item is the beanie. Access codes are single-use and non-transferable.</p>
         </div>
       </div>
     </div>

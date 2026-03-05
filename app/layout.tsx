@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "A0_BADX | Entry Gate",
-  description: "A0_BADX Entry Gate",
+  title: "A0_BADX PROYECT COMPANY | Entry Gate",
+  description: "A0_BADX PROYECT COMPANY Entry Gate",
 };
 
 export default function RootLayout({

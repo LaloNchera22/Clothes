@@ -180,12 +180,12 @@ export default function ProductGrid({ products }: ProductGridProps) {
             >
                 &times;
             </button>
-            <h2 className="text-2xl font-bold mb-6 font-mono tracking-tighter">COMPRAR_{selectedProduct.code}</h2>
+            <h2 className="text-2xl font-bold mb-6 font-mono tracking-tighter">PURCHASE_{selectedProduct.code}</h2>
             <div className="space-y-4 mb-8 text-sm font-mono">
-                <p>ARTÍCULO: {selectedProduct.code}</p>
-                <p>PRECIO: ${selectedProduct.price.toFixed(2)}</p>
+                <p>ITEM: {selectedProduct.code}</p>
+                <p>PRICE: ${selectedProduct.price.toFixed(2)}</p>
                 <p className="pt-4 border-t border-dashed border-black">
-                    NOTA: AL COMPRAR ESTE ARTÍCULO RECIBIRÁS 3 CÓDIGOS DE ACCESO ÚNICOS PARA DESBLOQUEAR EL ARCHIVO RESTRINGIDO.
+                    NOTE: PURCHASING THIS ITEM GRANTS 3 UNIQUE ACCESS CODES TO UNLOCK THE RESTRICTED ARCHIVE.
                 </p>
             </div>
 
