@@ -10,6 +10,7 @@ export interface Product {
   name: string
   price: number
   is_restricted: boolean
+  image?: string
 }
 
 interface ProductGridProps {
@@ -17,7 +18,7 @@ interface ProductGridProps {
 }
 
 export default function ProductGrid({ products }: ProductGridProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [secretCode, setSecretCode] = useState('')
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -34,11 +35,10 @@ export default function ProductGrid({ products }: ProductGridProps) {
   }
 
   const handleProductClick = (product: Product) => {
-    if (product.code === 'BEANIE-01') {
-      setIsModalOpen(true)
+    if (product.code === 'BEANIE-01' || !product.is_restricted) {
+      setSelectedProduct(product)
     } else if (isUnlocked && product.is_restricted) {
-      // Allow purchase logic for restricted items
-      showNotification('Initiating purchase for restricted item: ' + product.code)
+      setSelectedProduct(product)
     } else if (product.is_restricted) {
       showNotification('Access Denied. Item is locked.')
     }
@@ -144,9 +144,17 @@ export default function ProductGrid({ products }: ProductGridProps) {
                     `}
                     onClick={() => handleProductClick(product)}
                 >
-                    <div className="text-2xl font-bold tracking-widest">{product.code}</div>
+                    {product.image && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            className="absolute inset-0 w-full h-full object-contain p-4 opacity-50 group-hover:opacity-20 transition-opacity z-0 pointer-events-none mix-blend-multiply"
+                        />
+                    )}
+                    <div className="text-2xl font-bold tracking-widest relative z-10">{product.code}</div>
 
-                    <div className="flex justify-between items-end w-full">
+                    <div className="flex justify-between items-end w-full relative z-10">
                         <span className="text-sm uppercase">{product.name}</span>
                         <span className="text-sm font-bold">
                             {product.is_restricted && !isUnlocked ? 'LOCKED' : `$${product.price}`}
@@ -163,21 +171,21 @@ export default function ProductGrid({ products }: ProductGridProps) {
             <span>{isUnlocked ? 'ACCESS: GRANTED' : 'ACCESS: RESTRICTED'}</span>
         </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black/10 backdrop-blur-[2px] flex items-center justify-center z-50" onClick={() => setIsModalOpen(false)}>
+      {selectedProduct !== null && (
+        <div className="fixed inset-0 bg-black/10 backdrop-blur-[2px] flex items-center justify-center z-50" onClick={() => setSelectedProduct(null)}>
           <div className="bg-white border-[1px] border-black p-6 w-full max-w-md shadow-none relative" onClick={(e) => e.stopPropagation()}>
             <button
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => setSelectedProduct(null)}
                 className="absolute top-2 right-2 text-xl leading-none hover:text-gray-500"
             >
                 &times;
             </button>
-            <h2 className="text-2xl font-bold mb-6 font-mono tracking-tighter">PURCHASE_BEANIE-01</h2>
+            <h2 className="text-2xl font-bold mb-6 font-mono tracking-tighter">COMPRAR_{selectedProduct.code}</h2>
             <div className="space-y-4 mb-8 text-sm font-mono">
-                <p>ITEM: BEANIE-01</p>
-                <p>PRICE: $20.00</p>
+                <p>ARTÍCULO: {selectedProduct.code}</p>
+                <p>PRECIO: ${selectedProduct.price.toFixed(2)}</p>
                 <p className="pt-4 border-t border-dashed border-black">
-                    NOTE: PURCHASING THIS ITEM WILL GRANT YOU 2 UNIQUE ACCESS CODES TO UNLOCK THE RESTRICTED ARCHIVE.
+                    NOTA: AL COMPRAR ESTE ARTÍCULO RECIBIRÁS 3 CÓDIGOS DE ACCESO ÚNICOS PARA DESBLOQUEAR EL ARCHIVO RESTRINGIDO.
                 </p>
             </div>
 

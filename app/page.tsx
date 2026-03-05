@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ImageCarousel from "../components/ImageCarousel";
 
 export default function Home() {
   return (
@@ -17,20 +16,16 @@ export default function Home() {
       </header>
 
       <main className="flex-1 min-h-0 flex flex-col items-center justify-center p-4 lg:p-8">
-        <div className="w-full max-w-[1400px] h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 bg-white">
+        <div className="w-full max-w-[1400px] h-full flex flex-col items-center justify-center gap-8 lg:gap-16 bg-white">
 
-          <div className="flex items-center justify-center p-4 lg:p-8 relative overflow-hidden bg-white min-h-0">
-            <ImageCarousel />
-          </div>
-
-          <div className="flex flex-col justify-center p-4 lg:p-8 bg-white min-h-0">
-            <div className="space-y-8">
+          <div className="flex flex-col items-center text-center justify-center p-4 lg:p-8 bg-white min-h-0">
+            <div className="space-y-8 flex flex-col items-center">
               <div className="space-y-4">
-                <span className="text-[10px] font-bold tracking-[0.6em] uppercase text-stone-400 block">Gate Entry</span>
+                <span className="text-[10px] font-bold tracking-[0.6em] uppercase text-stone-400 block">Acceso</span>
               </div>
               <div className="w-12 h-[2px] bg-primary"></div>
-              <p className="text-[12px] lg:text-[14px] font-normal leading-loose text-stone-500 max-w-[320px]">
-                Ownership of the Initial Beanie acts as a physical key to our digital ecosystem. Secure the item to unlock the AW24 collection.
+              <p className="text-[12px] lg:text-[14px] font-normal leading-loose text-stone-500 max-w-[600px] mx-auto text-center">
+                Para acceder a todo el repertorio del lanzamiento mensual por tiempo limitado es solo con un código de compra. Al comprar un producto te llegan 3 códigos. Solo producimos 100 de cada drop y el único que se repite siempre es el gorro.
               </p>
             </div>
 
