@@ -29,11 +29,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center p-4 lg:p-8 bg-white min-h-0 overflow-y-auto">
+          <div className="flex flex-col justify-center p-4 lg:p-8 bg-white min-h-0">
             <div className="space-y-8">
               <div className="space-y-4">
                 <span className="text-[10px] font-bold tracking-[0.6em] uppercase text-stone-400 block">Gate Entry</span>
-                <h2 className="text-4xl lg:text-6xl font-black leading-[1.05] tracking-tight uppercase text-primary">Initial<br />Beanie</h2>
               </div>
               <div className="w-12 h-[2px] bg-primary"></div>
               <p className="text-[12px] lg:text-[14px] font-normal leading-loose text-stone-500 max-w-[320px]">
