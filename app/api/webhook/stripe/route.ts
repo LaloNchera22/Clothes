@@ -9,6 +9,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 }
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   apiVersion: '2023-10-16' as any, // Standard version
   typescript: true,
 })
@@ -25,6 +26,7 @@ export async function POST(req: Request) {
   try {
     if (!sig || !endpointSecret) throw new Error('Missing signature or secret')
     event = stripe.webhooks.constructEvent(body, sig, endpointSecret)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error(`Webhook Error: ${err.message}`)
     return NextResponse.json({ error: `Webhook Error: ${err.message}` }, { status: 400 })
