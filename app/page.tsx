@@ -6,7 +6,7 @@ export default function Home() {
       <header className="w-full shrink-0 flex justify-between items-center px-8 lg:px-16 py-4 z-20 bg-white">
         <div className="flex items-center gap-4">
           <div className="w-3 h-3 bg-primary"></div>
-          <h1 className="text-[10px] font-black tracking-[0.5em] uppercase">A0_BADX PROYECT COMPANY</h1>
+          <h1 className="text-[10px] font-normal tracking-[0.5em] uppercase">A0_BADX PROYECT COMPANY</h1>
         </div>
         <nav className="hidden md:flex gap-16">
           <Link className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="/archive">Archive</Link>
