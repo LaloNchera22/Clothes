@@ -29,6 +29,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ valid: true })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error('Error verifying code:', err)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })

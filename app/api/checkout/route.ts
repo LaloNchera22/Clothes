@@ -7,6 +7,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 
 // Using a standard version string, cast to any to avoid TS errors with newer/older definitions
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   apiVersion: '2023-10-16' as any,
   typescript: true,
 })
@@ -44,6 +45,7 @@ export async function POST(req: Request) {
     })
 
     return NextResponse.json({ url: session.url })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error('Error creating checkout session:', err)
     return NextResponse.json({ error: err.message }, { status: 500 })

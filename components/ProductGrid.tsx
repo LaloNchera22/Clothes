@@ -21,6 +21,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [loading, setLoading] = useState(false)
   const [verifying, setVerifying] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter()
 
   const handleProductClick = (product: Product) => {
