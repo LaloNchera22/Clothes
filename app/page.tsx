@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <>
-      <header className="w-full flex justify-between items-center px-8 lg:px-16 py-8 z-20 bg-white">
+      <header className="w-full shrink-0 flex justify-between items-center px-8 lg:px-16 py-4 z-20 bg-white">
         <div className="flex items-center gap-4">
           <div className="w-3 h-3 bg-primary"></div>
           <h1 className="text-[10px] font-black tracking-[0.5em] uppercase">A0_BADX</h1>
@@ -13,15 +13,15 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="flex-1 flex flex-col items-center justify-center p-6 lg:p-16">
-        <div className="w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 bg-white">
+      <main className="flex-1 min-h-0 flex flex-col items-center justify-center p-4 lg:p-8">
+        <div className="w-full max-w-[1400px] h-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 bg-white">
 
-          <div className="flex items-center justify-center p-8 lg:p-16 relative overflow-hidden bg-white">
-            <div className="w-full aspect-square relative flex items-center justify-center">
+          <div className="flex items-center justify-center p-4 lg:p-8 relative overflow-hidden bg-white min-h-0">
+            <div className="w-full h-full relative flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt="Initial Beanie"
-                className="relative z-10 w-[95%] h-[95%] object-cover grayscale contrast-[1.2] transition-transform duration-700 hover:scale-105"
+                className="relative z-10 w-full h-full max-h-full object-contain grayscale contrast-[1.2] transition-transform duration-700 hover:scale-105"
                 src="https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&q=80&w=800"
               />
               <span className="absolute top-0 left-0 text-[10px] font-mono text-stone-400 tracking-widest z-20 bg-white px-2 py-1 brutalist-border-light">OBJ.001</span>
@@ -29,20 +29,20 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center p-8 lg:p-16 bg-white">
-            <div className="space-y-16">
-              <div className="space-y-6">
+          <div className="flex flex-col justify-center p-4 lg:p-8 bg-white min-h-0 overflow-y-auto">
+            <div className="space-y-8">
+              <div className="space-y-4">
                 <span className="text-[10px] font-bold tracking-[0.6em] uppercase text-stone-400 block">Gate Entry</span>
-                <h2 className="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight uppercase text-primary">Initial<br />Beanie</h2>
+                <h2 className="text-4xl lg:text-6xl font-black leading-[1.05] tracking-tight uppercase text-primary">Initial<br />Beanie</h2>
               </div>
               <div className="w-12 h-[2px] bg-primary"></div>
-              <p className="text-[14px] font-normal leading-loose text-stone-500 max-w-[320px]">
+              <p className="text-[12px] lg:text-[14px] font-normal leading-loose text-stone-500 max-w-[320px]">
                 Ownership of the Initial Beanie acts as a physical key to our digital ecosystem. Secure the item to unlock the AW24 collection.
               </p>
             </div>
 
-            <div className="mt-20 flex flex-col gap-6">
-              <button className="group relative flex items-center justify-between w-full bg-primary text-white py-8 px-10 overflow-hidden transition-all hover:bg-stone-900">
+            <div className="mt-12 flex flex-col gap-4">
+              <button className="group relative flex items-center justify-between w-full bg-primary text-white py-6 px-8 overflow-hidden transition-all hover:bg-stone-900">
                 <span className="text-[11px] font-black tracking-[0.4em] uppercase relative z-10">Acquire Access</span>
                 <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-2 relative z-10">arrow_forward</span>
               </button>
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="w-full flex flex-col md:flex-row justify-between items-center px-8 lg:px-16 py-12 text-[10px] font-bold tracking-[0.3em] text-stone-400 uppercase bg-white z-20">
+      <footer className="w-full shrink-0 flex flex-col md:flex-row justify-between items-center px-8 lg:px-16 py-4 text-[10px] font-bold tracking-[0.3em] text-stone-400 uppercase bg-white z-20">
         <div className="flex gap-16 items-center mb-6 md:mb-0">
           <span className="text-primary">© 24 A0_BADX</span>
           <span className="hidden md:inline">Universal Access Protocol</span>

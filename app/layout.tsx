@@ -28,9 +28,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-primary selection:text-white bg-white`}
+        className={`${inter.variable} font-sans antialiased h-screen relative overflow-hidden selection:bg-primary selection:text-white bg-white`}
       >
-        <div className="relative z-10 flex min-h-screen w-full flex-col">
+        <div className="relative z-10 flex h-screen w-full flex-col">
           {children}
         </div>
       </body>
