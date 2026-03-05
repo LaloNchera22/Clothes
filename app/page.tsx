@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ImageCarousel from "../components/ImageCarousel";
 
 export default function Home() {
@@ -9,9 +10,9 @@ export default function Home() {
           <h1 className="text-[10px] font-black tracking-[0.5em] uppercase">A0_BADX</h1>
         </div>
         <nav className="hidden md:flex gap-16">
-          <a className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="#">Archive</a>
-          <a className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="#">Contact</a>
-          <a className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="#">Account</a>
+          <Link className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="/archive">Archive</Link>
+          <Link className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="/contact">Contact</Link>
+          <Link className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-stone-400 transition-colors" href="/account">Account</Link>
         </nav>
       </header>
 
@@ -34,17 +35,17 @@ export default function Home() {
             </div>
 
             <div className="mt-12 flex flex-col gap-4">
-              <button className="group relative flex items-center justify-between w-full bg-primary text-white py-6 px-8 overflow-hidden transition-all hover:bg-stone-900">
+              <Link href="/archive" className="group relative flex items-center justify-between w-full bg-primary text-white py-6 px-8 overflow-hidden transition-all hover:bg-stone-900 block">
                 <span className="text-[11px] font-black tracking-[0.4em] uppercase relative z-10">Acquire Access</span>
                 <span className="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:translate-x-2 relative z-10">arrow_forward</span>
-              </button>
+              </Link>
               <div className="flex justify-between items-center px-2">
-                <button className="flex items-center py-2 text-[10px] font-bold uppercase tracking-[0.4em] transition-colors text-stone-400 hover:text-primary">
+                <Link href="/details" className="flex items-center py-2 text-[10px] font-bold uppercase tracking-[0.4em] transition-colors text-stone-400 hover:text-primary block">
                   Details
-                </button>
-                <button className="flex items-center py-2 text-[10px] font-bold uppercase tracking-[0.4em] transition-colors text-stone-400 hover:text-primary">
+                </Link>
+                <Link href="/terms" className="flex items-center py-2 text-[10px] font-bold uppercase tracking-[0.4em] transition-colors text-stone-400 hover:text-primary block">
                   Terms
-                </button>
+                </Link>
               </div>
             </div>
           </div>

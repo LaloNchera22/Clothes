@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export interface Product {
   id: string
@@ -21,15 +22,25 @@ export default function ProductGrid({ products }: ProductGridProps) {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [loading, setLoading] = useState(false)
   const [verifying, setVerifying] = useState(false)
+  const [notification, setNotification] = useState<string | null>(null)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter()
+
+  const showNotification = (message: string) => {
+    setNotification(message);
+    setTimeout(() => {
+      setNotification(null);
+    }, 5000);
+  }
 
   const handleProductClick = (product: Product) => {
     if (product.code === 'BEANIE-01') {
       setIsModalOpen(true)
     } else if (isUnlocked && product.is_restricted) {
       // Allow purchase logic for restricted items
-      alert('Purchasing restricted item: ' + product.code)
+      showNotification('Initiating purchase for restricted item: ' + product.code)
+    } else if (product.is_restricted) {
+      showNotification('Access Denied. Item is locked.')
     }
   }
 
@@ -47,11 +58,11 @@ export default function ProductGrid({ products }: ProductGridProps) {
         window.location.href = data.url
       } else {
         console.error('Failed to create checkout session', data)
-        alert('Checkout failed: ' + (data.error || 'Unknown error'))
+        showNotification('Checkout failed: ' + (data.error || 'Unknown error'))
       }
     } catch (error) {
       console.error('Error during checkout:', error)
-      alert('Error connecting to checkout service')
+      showNotification('Error connecting to checkout service')
     } finally {
         setLoading(false)
     }
@@ -72,22 +83,36 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
         if (data.valid) {
              setIsUnlocked(true)
-             alert('ACCESS GRANTED')
+             showNotification('ACCESS GRANTED')
+             setSecretCode('')
         } else {
-            alert('INVALID CODE')
+            showNotification('INVALID CODE')
         }
     } catch (error) {
         console.error('Error verifying code:', error)
-        alert('System Error')
+        showNotification('System Error')
     } finally {
         setVerifying(false)
     }
   }
 
   return (
-    <div className="min-h-screen bg-white text-black font-mono p-0">
+    <div className="min-h-screen bg-white text-black font-mono p-0 relative">
+      {notification && (
+        <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-3 z-[100] flex items-center gap-4 shadow-xl border border-stone-800">
+          <span className="text-xs tracking-widest uppercase">{notification}</span>
+          <button onClick={() => setNotification(null)} className="text-stone-400 hover:text-white transition-colors">
+            &times;
+          </button>
+        </div>
+      )}
       <header className="p-4 flex justify-between items-center border-b border-black">
-        <h1 className="text-xl font-bold tracking-tighter">0xBAD CLOTHES</h1>
+        <div className="flex items-center gap-6">
+          <Link href="/" className="text-xs font-mono border-b border-black hover:text-stone-500 transition-colors uppercase">
+            &lt; Return
+          </Link>
+          <h1 className="text-xl font-bold tracking-tighter">0xBAD CLOTHES</h1>
+        </div>
         <form onSubmit={handleCodeSubmit} className="flex gap-2 items-center">
             <span className="text-xs hidden md:inline">ENTER_ACCESS_CODE:</span>
           <input
