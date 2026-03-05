@@ -7,24 +7,8 @@
 - Network:       http://192.168.0.2:3000
 
 ✓ Starting...
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
-✓ Ready in 1176ms
+✓ Ready in 1200ms
 ○ Compiling / ...
- GET / 200 in 5.3s (compile: 4.9s, render: 404ms)
-✓ Compiled in 733ms
- GET / 200 in 713ms (compile: 451ms, render: 262ms)
- GET /archive 200 in 1104ms (compile: 981ms, render: 122ms)
- GET /archive 200 in 162ms (compile: 58ms, render: 104ms)
- GET /contact 200 in 701ms (compile: 580ms, render: 121ms)
- GET /account 200 in 558ms (compile: 504ms, render: 54ms)
- GET /details 200 in 435ms (compile: 387ms, render: 48ms)
- GET /terms 200 in 480ms (compile: 414ms, render: 65ms)
- GET / 200 in 224ms (compile: 44ms, render: 179ms)
- GET /archive 200 in 60ms (compile: 24ms, render: 36ms)
-✓ Compiled in 35ms
- GET / 200 in 74ms (compile: 9ms, render: 65ms)
- GET /archive 200 in 275ms (compile: 192ms, render: 83ms)
+ GET / 200 in 5.0s (compile: 4.1s, render: 893ms)
+ GET /details 200 in 1830ms (compile: 1550ms, render: 280ms)
+ GET /archive 200 in 702ms (compile: 548ms, render: 154ms)
